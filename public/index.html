@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đáp án ở sau bước đăng nhập</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===================== LOGIN SCREEN ===================== -->
+  <div class="login-wrap" id="loginScreen">
+    <h1>Cái tính lại thích tò mò à?</h1>
+    <p class="sub">Mất công tò mò ấn vào rồi thì thử đi biết đâu...</p>
+
+    <div class="field">
+      <label>Mật khẩu</label>
+      <input type="password" id="password" placeholder="Nhập mật khẩu" autocomplete="off">
+    </div>
+    <div class="login-err" id="loginErr"></div>
+    <button class="login-btn" onclick="doLogin()">Đăng nhập</button>
+
+    <div class="hint">
+      <p><strong>Gợi ý:</strong> Mật khẩu có 8 chữ số, là một sự kiện quan trọng nhất cuộc đời bạn.</p>
+    </div>
+  </div>
+
+  <!-- ===================== APP SCREEN ===================== -->
+  <div class="app" id="appScreen">
+    <div class="topbar">
+      <div class="whoami">
+        Vai trò: <span class="badge" id="roleBadge"></span>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="edit-btn" id="editToggleBtn" onclick="toggleEditPanel()" style="display:none;">Chỉnh sửa</button>
+        <button class="logout-btn" onclick="doLogout()">Đăng xuất</button>
+      </div>
+    </div>
+
+    <div class="event-title">Tuấn Anh đang đếm ngược</div>
+    <div class="event-name" id="eventNameDisplay">Những ngày đợi bạn quay về</div>
+
+    <div class="rings">
+      <div class="ring-item">
+        <div class="ring-visual">
+          <svg viewBox="0 0 130 130">
+            <circle class="ring-track" cx="65" cy="65" r="55"></circle>
+            <circle class="ring-fill" id="ringDays" cx="65" cy="65" r="55"></circle>
+          </svg>
+          <div class="ring-number" id="numDays">00</div>
+        </div>
+        <div class="ring-label">Ngày</div>
+      </div>
+      <div class="ring-item">
+        <div class="ring-visual">
+          <svg viewBox="0 0 130 130">
+            <circle class="ring-track" cx="65" cy="65" r="55"></circle>
+            <circle class="ring-fill" id="ringHours" cx="65" cy="65" r="55"></circle>
+          </svg>
+          <div class="ring-number" id="numHours">00</div>
+        </div>
+        <div class="ring-label">Giờ</div>
+      </div>
+      <div class="ring-item">
+        <div class="ring-visual">
+          <svg viewBox="0 0 130 130">
+            <circle class="ring-track" cx="65" cy="65" r="55"></circle>
+            <circle class="ring-fill" id="ringMinutes" cx="65" cy="65" r="55"></circle>
+          </svg>
+          <div class="ring-number" id="numMinutes">00</div>
+        </div>
+        <div class="ring-label">Phút</div>
+      </div>
+      <div class="ring-item">
+        <div class="ring-visual">
+          <svg viewBox="0 0 130 130">
+            <circle class="ring-track" cx="65" cy="65" r="55"></circle>
+            <circle class="ring-fill" id="ringSeconds" cx="65" cy="65" r="55"></circle>
+          </svg>
+          <div class="ring-number" id="numSeconds">00</div>
+        </div>
+        <div class="ring-label">Giây</div>
+      </div>
+    </div>
+
+    <div class="finished-msg" id="finishedMsg">🎉 Sự kiện đã bắt đầu!</div>
+
+    <!-- Edit panel: admin only -->
+    <div class="edit-panel" id="editPanel">
+      <h3>Chỉnh sửa đếm ngược (Quản trị viên)</h3>
+      <div class="field">
+        <label>Tên sự kiện</label>
+        <input type="text" id="editEventName" placeholder="VD: Lễ ra mắt sản phẩm">
+      </div>
+      <div class="field">
+        <label>Ngày & giờ kết thúc</label>
+        <input type="datetime-local" id="editDateTime">
+      </div>
+      <button class="save-btn" onclick="saveCountdown()">Lưu thay đổi</button>
+      <div class="save-msg" id="saveMsg"></div>
+      <button class="logout-btn" onclick="toggleEditPanel()">Quay lại</button>
+    </div>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
